@@ -1,0 +1,107 @@
+{
+  "AuthHeaders": {
+    "Accept": "application/json,text/html,application/xhtml+xml,applicaton/xml;q=0.9/;q=0.8",
+    "Content-Type": "application/json"
+  },
+  "AuthBody": {
+    "instanceName": "",
+    "username": "",
+    "userDomain": "",
+    "password": ""
+  },
+  "OpenEventHeaders": {
+    "Accept": "application/json,text/html,application/xhtml+xml,applicaton/xml;q=0.9/;q=0.8",
+    "Content-Type": "application/json",
+    "Authorization": "Archer session-id=SessionToken"
+  },
+  "OpenEventParameters": {
+    "Content": {
+      "LevelId": 232,
+      "Tag": "Security_Incidents",
+      "FieldContents": {
+        "16132": {
+          "Type": 1,
+          "Tag": "Title",
+          "Value": "Email title Here",
+          "FieldId": 16132
+        },
+        "16109": {
+          "Type": 1,
+          "Tag": "Incident Description",
+          "Value": "Incident Description Here",
+          "FieldId": 16109
+        },
+        "24188": {
+          "Type": 4,
+          "Tag": "Incident Category",
+          "Value": {
+            "ValuesListIds": [
+              201693
+            ]
+          },
+          "FieldId": 24188
+        },
+        "16172": {
+          "Type": 4,
+          "Tag": "Source",
+          "Value": {
+            "ValuesListIds": [
+              74226
+            ]
+          },
+          "FieldId": 16172
+        },
+        "24194": {
+          "Type": 4,
+          "Tag": "Criticality SOC",
+          "Value": {
+            "ValuesListIds": [
+              201705
+            ]
+          },
+          "FieldId": 24194
+        },
+        "24203": {
+          "Type": 4,
+          "Tag": "SIEM Name",
+          "Value": {
+            "ValuesListIds": [
+              282324
+            ]
+          },
+          "FieldId": 24203
+        },
+        "24189": {
+          "Type": 4,
+          "Tag": "Other Incident Related?",
+          "Value": {
+            "ValuesListIds": [
+              201697
+            ]
+          },
+          "FieldId": 24189
+        },
+        "24196": {
+          "Type": 4,
+          "Tag": "Impact to Business",
+          "Value": {
+            "ValuesListIds": [
+              201713
+            ]
+          },
+          "FieldId": 24196
+        },
+        "20741": {
+          "Type": 9,
+          "Tag": "Related Device",
+          "Value": {
+            "ContentId": [
+              3961286
+            ]
+          },
+          "FieldId": 20741
+        }
+      }
+    }
+  }
+}
