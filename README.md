@@ -9,15 +9,29 @@
 
 ![](Process_diagram.jpg)
 
-This project aims to automate the process of creating new incidents on [Archer] security incidents platform  by collecting e-mails from fishing attacks and creating a new incident report on the platform, with all required fields covered by the automation*
+This project aims to automate the process of creating new incidents on [Archer] security incidents platform  by collecting e-mails from fishing attacks and creating a new incident report on the platform, with all required fields covered by the automation
 
 Solution created using [Python] Language, [Microsoft Graph API], the library [python-o365] to collect the emails from the agency and API from the [Archer] to open our hearts on the platform.
 
-**At the present time, at API [Archer] it is not capable of the PROVISITIVE field of ORIGIN - COMPANY GERENCY CONTEXT because of an improvement in efficiency, not in automated manufacturing. The completion of this field is within the code. According to the developers of the platform, in ⁇  it will be corrected such.*
+## Author
 
-#### Main Developer
+👤 **Antonio Costa**
 
-- [Antonio Costa]
+* Github: [@Antonio-Costa00](https://github.com/Antonio-Costa00)
+* Linkedin: [@Antonio Costa](https://www.linkedin.com/in/antonio-costa-099ab0182/)
+
+## Contributing
+
+Contributions, issues and feature requests are welcome!
+
+## Show your support
+
+Give a ⭐️ if this project helped you!
+
+## License
+
+Copyright © 2022 [Antonio Costa](https://github.com/Antonio-Costa00).<br/>
+This project is [MIT](https://github.com/Antonio-Costa00/Calculus-exercises/blob/main/LICENSE) licensed.
 
 ## Index
 
