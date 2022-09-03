@@ -110,6 +110,8 @@ For app creation, the user must follow the following steps:
 
 ### 1 - Edit environment file <a name = "edit_env"></a>
 
+1. Create a file named .env
+1. Copy all content from .env.example to .env file
 1. Edit the .env environment file
 1. Within the file, edit the APPLICATION_ID, SECRET_ID and TENANT_ID values, with the collected values of the creation of the application.
 1. Also edit the ACCOUNT_TO_ACESS variable with the email address to be read.¹
