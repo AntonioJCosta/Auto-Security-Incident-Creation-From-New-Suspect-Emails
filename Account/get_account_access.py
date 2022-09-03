@@ -29,10 +29,10 @@ def get_account_access(
         tenant_id=tenant_id,
     )
 
-    is_acc_auth = account.authenticate(
-        scopes=["basic", "message_all", "message_all_shared"]
-    )
-    if is_acc_auth:
-        return account
-    account.authenticate(scopes=["basic", "message_all", "message_all_shared"])
+    if not account.is_authenticated:
+        try:
+            account.authenticate(scopes=["basic", "message_all"])
+            return account
+        except Exception as e:
+            raise Exception(f"Authentication failed: {e}")
     return account
