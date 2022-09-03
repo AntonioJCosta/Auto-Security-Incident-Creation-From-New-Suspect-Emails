@@ -30,7 +30,6 @@ def create_incident(json_data: dict, mail_details: dict, session_token: str, url
     flatten_json_data[
         ("OpenEventHeaders", "Authorization")
     ] = f"Archer session-id={session_token}"
-    # Development, homologation and production ids are different, so we need to get the correct ids in the json file
     title_id = list(json_data["OpenEventParameters"]["Content"]["FieldContents"])[0]
     incident_desc_id = list(
         json_data["OpenEventParameters"]["Content"]["FieldContents"]
