@@ -7,7 +7,7 @@
 
 # Auto Incidents Creation From Suspect emails on Archer Security Incidents Platform 
 
-![](Process_diagram.jpg)
+![](Diagram.png)
 
 This project aims to automate the process of creating new incidents on [Archer] security incidents platform by collecting suspicious e-mails from a mailbox and creating a new incident report on the platform, with all required fields covered by the automation
 
