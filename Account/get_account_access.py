@@ -1,10 +1,8 @@
-import os
-
 from O365 import Account, FileSystemTokenBackend
 
 
 def get_account_access(
-    account_to_acess: str,
+    acc_to_acess: str,
     app_id: str,
     app_secret: str,
     token_path: str,
@@ -17,8 +15,6 @@ def get_account_access(
     :param account_to_acess: The account to access.
     :param app_id: The application ID.
     :param app_secret: The application secret.
-    :param token_path: The path to the token file.
-    :param token_filename: The name of the token file.
     :param tenant_id: The tenant ID.
     :return: Account object to acess.
     """
@@ -33,11 +29,10 @@ def get_account_access(
         tenant_id=tenant_id,
     )
 
-    try:
-        is_token_exists = os.path.isfile(f"{token_path}/{token_filename}")
-        if is_token_exists:
-            return account
-        account.authenticate(scopes=["basic", "message_all", "message_all_shared"])
+    is_acc_auth = account.authenticate(
+        scopes=["basic", "message_all", "message_all_shared"]
+    )
+    if is_acc_auth:
         return account
-    except Exception:
-        os.remove(f"{token_path}/{token_filename}")
+    account.authenticate(scopes=["basic", "message_all", "message_all_shared"])
+    return account

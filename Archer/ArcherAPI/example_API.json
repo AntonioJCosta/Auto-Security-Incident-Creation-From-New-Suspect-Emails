@@ -16,90 +16,90 @@
   },
   "OpenEventParameters": {
     "Content": {
-      "LevelId": 232,
+      "LevelId": "LevelIdHere",
       "Tag": "Security_Incidents",
       "FieldContents": {
-        "16132": {
+        "FieldIdHere": {
           "Type": 1,
           "Tag": "Title",
           "Value": "Email title Here",
-          "FieldId": 16132
+          "FieldId": "FieldIdHere"
         },
-        "16109": {
+        "FieldIdHere": {
           "Type": 1,
           "Tag": "Incident Description",
           "Value": "Incident Description Here",
-          "FieldId": 16109
+          "FieldId": "FieldIdHere"
         },
-        "24188": {
+        "FieldIdHere": {
           "Type": 4,
           "Tag": "Incident Category",
           "Value": {
             "ValuesListIds": [
-              201693
+              ""
             ]
           },
-          "FieldId": 24188
+          "FieldId": "FieldIdHere"
         },
-        "16172": {
+        "FieldIdHere": {
           "Type": 4,
           "Tag": "Source",
           "Value": {
             "ValuesListIds": [
-              74226
+              ""
             ]
           },
-          "FieldId": 16172
+          "FieldId": "FieldIdHere"
         },
-        "24194": {
+        "FieldIdHere": {
           "Type": 4,
           "Tag": "Criticality SOC",
           "Value": {
             "ValuesListIds": [
-              201705
+              ""
             ]
           },
-          "FieldId": 24194
+          "FieldId": "FieldIdHere"
         },
-        "24203": {
+        "FieldIdHere": {
           "Type": 4,
           "Tag": "SIEM Name",
           "Value": {
             "ValuesListIds": [
-              282324
+              ""
             ]
           },
-          "FieldId": 24203
+          "FieldId": "FieldIdHere"
         },
-        "24189": {
+        "FieldIdHere": {
           "Type": 4,
           "Tag": "Other Incident Related?",
           "Value": {
             "ValuesListIds": [
-              201697
+              ""
             ]
           },
-          "FieldId": 24189
+          "FieldId": "FieldIdHere"
         },
-        "24196": {
+        "FieldIdHere": {
           "Type": 4,
           "Tag": "Impact to Business",
           "Value": {
             "ValuesListIds": [
-              201713
+              ""
             ]
           },
-          "FieldId": 24196
+          "FieldId": "FieldIdHere"
         },
-        "20741": {
+        "FieldIdHere": {
           "Type": 9,
           "Tag": "Related Device",
           "Value": {
             "ContentId": [
-              3961286
+              ""
             ]
           },
-          "FieldId": 20741
+          "FieldId": "FieldIdHere"
         }
       }
     }

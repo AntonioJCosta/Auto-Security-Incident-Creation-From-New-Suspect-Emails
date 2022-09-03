@@ -6,7 +6,7 @@ from flatten_dict import flatten, unflatten
 from .format_mail import format_mail
 
 
-def open_event(json_data: dict, mail_details: dict, session_token: str, url: str):
+def create_incident(json_data: dict, mail_details: dict, session_token: str, url: str):
     """
     It takes a json_data dict, a mail_details dict and a session_token string as arguments, open a ArcherEvent with mail_details returns
     a json response

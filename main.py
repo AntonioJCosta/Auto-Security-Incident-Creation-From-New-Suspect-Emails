@@ -7,7 +7,7 @@ if __name__ == "__main__":
     from Account.get_account_access import get_account_access
     from Account.get_last_email import get_last_email
     from Archer.ArcherPlatform.auth_request import auth_request
-    from Archer.ArcherPlatform.open_event import open_event
+    from Archer.ArcherPlatform.create_incident import create_incident
     from Archer.read_json import read_json
 
     load_dotenv()
@@ -23,7 +23,7 @@ if __name__ == "__main__":
     TOKEN_PATH = "token_dir"
     TOKEN_FILENAME = "o365_token.txt"
     # Update here with absolute path
-    JSON_DATA = read_json("Archer/ArcherAPI/archer_example.json")
+    JSON_DATA = read_json("./Archer/ArcherAPI/example_API.json")
 
     # Get account access
     account = get_account_access(
@@ -41,4 +41,4 @@ if __name__ == "__main__":
         )
 
         # Create incident
-        request = open_event(JSON_DATA, last_email, session_token, ARCHER_URL)
+        request = create_incident(JSON_DATA, last_email, session_token, ARCHER_URL)
