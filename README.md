@@ -37,7 +37,6 @@ This project is [MIT](https://github.com/Antonio-Costa00/Calculus-exercises/blob
 
 - [Creating an application on Microsoft Azure](#application)
 - [Access to services](#application_acess)
-- [Monitoring of application](#monitoring)
 
 ## Creating an application on Microsoft Azure <a name = "application"></a>
 
