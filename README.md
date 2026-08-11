@@ -1,181 +1,237 @@
-[Archer]: https://www.archerirm.com/
-[Python]: https://www.python.org/
-[python-o365]: (https://github.com/O365/python-o365)
-[Microsoft Graph API]: (https://docs.microsoft.com/pt-br/graph/overview)
-[Antonio Costa]: (https://github.com/Antonio-Costa00)
-[portal azure]: (https://portal.azure.com/#home)
+# Automated Security Incident Creation from Suspicious Emails
 
-# Auto Incidents Creation From Suspect New Suspect Emails on Archer Security Incidents Platform 
+![Project architecture](Diagram.png)
 
-![](Diagram.png)
+This project automates the creation of security incidents in the Archer Security Incidents platform.
 
-This project aims to automate the process of creating new incidents on [Archer] security incidents platform by collecting suspicious e-mails from a mailbox and creating a new incident report on the platform, with all required fields covered by the automation
+The application monitors a mailbox for suspicious emails, processes the relevant message data, and creates a new incident in Archer with the required information.
 
-Solution created using [Python] Language, [Microsoft Graph API], [python-o365] library to collect e-mails and acess mailbox and [Archer] API to open new incidents on the platform.
+## Overview
 
-## Author
+The solution integrates:
 
-👤 **Antonio Costa**
+- Microsoft Graph API for mailbox access;
+- Python for the automation workflow;
+- `python-o365` for Microsoft 365 authentication and email processing;
+- Archer API for incident creation;
+- OAuth 2.0;
+- Linux for application execution.
 
-* Github: [@Antonio-Costa00](https://github.com/Antonio-Costa00)
-* Linkedin: [@Antonio Costa](https://www.linkedin.com/in/antonio-costa-099ab0182/)
+The workflow is designed to reduce manual effort in security operations and standardize the creation of incidents from suspicious emails.
 
-## Contributing
+## Main Workflow
 
-Contributions, issues and feature requests are welcome!
+1. Authenticate the application with Microsoft Azure and Microsoft Graph.
+2. Monitor the configured mailbox for new suspicious emails.
+3. Retrieve and process the email content.
+4. Extract the relevant incident information.
+5. Authenticate with Archer.
+6. Create a new security incident through the Archer API.
+7. Continue monitoring the mailbox for new messages.
 
-## Show your support
+## Technologies
 
-Give a ⭐️ if this project helped you!
+- Python
+- Microsoft Graph API
+- `python-o365`
+- Archer API
+- OAuth 2.0
+- Microsoft Azure
+- Linux
+- JSON
+- Shell Script
 
-## License
+## Project Structure
 
-Copyright © 2022 [Antonio Costa](https://github.com/Antonio-Costa00).<br/>
-This project is [MIT](https://github.com/Antonio-Costa00/Calculus-exercises/blob/main/LICENSE) licensed.
-
-## Index
-
-- [Creating an application on Microsoft Azure](#application)
-- [Access to services](#application_acess)
-
-## Creating an application on Microsoft Azure <a name = "application"></a>
-
-Creating the application it's necessary to enable the reading permission of user's email.
-
-With the creation of the application, it's possible to read any email account within the box, only possessing the application ID, the tenant ID and the secret key ID.*
-
-**Note**: Only Azure administrators can create new applications unless the permission of creating new applications has been released to users.*
-
-For app creation, the following steps should be followed:
-
-- [1 - Application creation on Microsoft Azure](#new_application)
-- [2 - Generating a Secret Key](#secret_key)
-- [3 - Setting application](#set_app)
-- [4 - Start application](#start_app)
-
-### 1 - Application creation on Microsoft Azure <a name = "new_application" ></a>
-
-For access to email, it's necessary to create an application in Microsoft Azure Directory, with application permission to access the email reading permittions
-
-For app creation, the user must follow the following steps:
-
-1. Access [portal azure]
-
-1. Access Azure Active Directory
-
-1. Application registration
-
-1. Give a name to the application
-
-1. In types of accounts supported, select Accounts in this organizational directory only (*tenant name* only - Single tenant)
-
-**Note:**
-
-- Selecting Accounts in this organizational directory only (*tenant name* only - Single tenant) only tenant accounts can access the app 
-
-- If someone outside the tenant tries to acess the application, the follow error will be generated: "You cannot sign in here with a personal account. Instead, use your school or professional account."
-
-1. Selecting Platform, Web Application
-
-1. Within url redirecting, select the address https://login.microsoftonline.com/common/oauth2/nativeclient
-
-1. Register the app
-
-1. Collect the application ID (client) and the tenant ID (directory).
-
-### 2 - Generating a secret key <a name = "secret_key"></a>
-
-1. On app registrations, Certificates & secrets 
-1. New client secret
-1. Select a validate time
-1. Add
-1. Copy the value of ID¹
-
-*² The value of the ID is only possible to preview once, so the value of the ID should be collected immediately after the creation of it.* 
-
-### 3 - Adding new permissions <a name = "new_permissions"></a>
-
-1. API permissions
-1. Add a permision
-1. Microsoft Graph
-1. Delegated permissions
-1. Search for *mail* and select All Read permissions that you want.
-1. Add permissions.
-
-## Setting application <a name = "set_app"></a>
-
-- [1 - Edit environment file](#edit_env)
-- [2 - Archer API](#Archer_API)
-
-### 1 - Edit environment file <a name = "edit_env"></a>
-
-1. Create a file named .env
-1. Copy all content from .env.example to .env file
-1. Edit the .env environment file
-1. Within the file, edit the APPLICATION_ID, SECRET_ID and TENANT_ID values, with the collected values of the creation of the application.
-1. Also edit the ACCOUNT_TO_ACESS variable with the email address to be read.¹
-
-*¹This option it's necessary on case the mail is a shared mail*
-
-### 2 - Archer API <a name = "Archer_API"></a>
-
-There is a Archer API file .json on ./Archer/ArcherAPI/example_API.json
-
-You must replace the API with informatios from your Archer System.
-
-
-## Start application <a name = "start_app"></a>
-
-After following the previous steps, we need to install the project dependencies
-
-```
-pip3 install -r requirements.txt
+```text
+.
+├── Archer/
+│   └── ArcherAPI/
+├── .env.example
+├── main.py
+├── get_account_access.py
+├── get_last_mail.py
+├── read_json.py
+├── auth_request.py
+├── format_mail.py
+├── create_incident.py
+├── requirements.txt
+├── start_restart_application.sh
+└── Diagram.png
 ```
 
-If you want to run the application in a simple way you can run the command
+## Prerequisites
 
+Before running the application, make sure you have:
+
+- Python 3 installed;
+- access to a Microsoft Azure tenant;
+- permission to register an application in Azure;
+- access to the target mailbox;
+- access to the Archer environment;
+- the required Archer API information;
+- a Linux server or Linux-based environment.
+
+## Azure Application Setup
+
+Create an application registration in Microsoft Entra ID, formerly known as Azure Active Directory.
+
+The exact permissions depend on the deployment model and the mailbox being accessed.
+
+For unattended automation or shared mailboxes, Microsoft Graph application permissions may be required. These permissions generally require administrator consent.
+
+Use the principle of least privilege and grant only the permissions required by the deployment.
+
+Official documentation:
+
+- [Microsoft Graph overview](https://learn.microsoft.com/en-us/graph/overview)
+- [Microsoft identity platform documentation](https://learn.microsoft.com/en-us/entra/identity-platform/)
+
+### Application Registration
+
+1. Open the [Microsoft Entra admin center](https://entra.microsoft.com/).
+2. Go to **App registrations**.
+3. Select **New registration**.
+4. Define the application name.
+5. Select the appropriate account type for the organization.
+6. Register the application.
+7. Copy the following values:
+   - Application (client) ID;
+   - Directory (tenant) ID.
+8. Create a client secret if required by the selected authentication flow.
+9. Store the client secret value securely. It is displayed only once.
+
+### API Permissions
+
+Configure the Microsoft Graph permissions required to read the target mailbox.
+
+Depending on the authentication flow, permissions may be delegated or application-based.
+
+Do not grant broad mailbox permissions unless they are strictly necessary. If possible, restrict access to the specific mailbox used by the automation.
+
+## Environment Configuration
+
+Create a local environment file based on the example:
+
+```bash
+cp .env.example .env
 ```
+
+Update the values according to your environment:
+
+```env
+APPLICATION_ID=your-application-id
+TENANT_ID=your-tenant-id
+CLIENT_SECRET=your-client-secret
+ACCOUNT_TO_ACCESS=mailbox@example.com
+```
+
+The exact variable names must match the ones expected by the application.
+
+Never commit `.env`, credentials, tokens, or real API configuration files to the repository.
+
+Make sure the environment file is included in `.gitignore`.
+
+## Archer API Configuration
+
+The repository contains an example Archer API configuration:
+
+```text
+Archer/ArcherAPI/example_API.json
+```
+
+Replace the example values with the configuration required by your Archer environment.
+
+Do not commit:
+
+- Production URLs;
+- API credentials;
+- session tokens;
+- tenant-specific identifiers;
+- customer information;
+- real email content;
+- confidential Archer configuration.
+
+Use sanitized example values when sharing the project publicly.
+
+## Installation
+
+Install the Python dependencies:
+
+```bash
+python3 -m pip install -r requirements.txt
+```
+
+For production environments, using a virtual environment is recommended:
+
+```bash
+python3 -m venv .venv
+source .venv/bin/activate
+python3 -m pip install -r requirements.txt
+```
+
+## Running the Application
+
+Run the application directly:
+
+```bash
 python3 main.py
 ```
 
-If you want your application to run as a background process:
+To start the application using the helper script:
 
-```
+```bash
 sh start_restart_application.sh
 ```
 
-This script will start to run the application as a background process.
+The first authentication may require an interactive browser flow. Follow the URL displayed in the terminal and provide the resulting authorization information when prompted.
 
-**OBS**: 
+After successful authentication, the application can continue monitoring the configured mailbox and creating incidents automatically.
 
-- At the moment, this solution only runs on Linux servers, and in the future I will create an equal Windows solution.
+## Authentication and Tokens
 
-At the first time you run your application a message asking for an access token will emerge.
+The authentication behavior depends on the Microsoft Graph OAuth flow configured for the application.
 
-```
-https://login.microsoftonline.com/...
-Paste the authenticated url here:
-```
+Some authentication flows require token renewal or user interaction. For unattended production workloads, use an appropriate service-to-service authentication model and follow Microsoft identity platform recommendations.
 
-1. To add acess the mailbox, you must acess the link token generated on the terminal screen
-1. If it is the first time accessing the application, it will be asked about what the app wants to do, and in our case, perform the reading of the mailbox.
-1. If you are repeating the process, nothing will be erased.
-1. In both cases, a new url will be generated in the browser.
-1. Collect the URL and paste the terminal.
-1. If all happened well, the following message would appear in the terminal.
+Tokens and secrets must be stored securely and must never be committed to source control.
 
-```
-Authentication Flow Completed. Oauth Access Token Stored. You can now use the API.
-```
+## Operational Considerations
 
-For this project, after the 90 days, a new access token must be generated, repeating the errors of the previous session.
+For production usage, consider running the application with:
 
-And now everytime the mailbox receives a new email automatically the solution will create a new incident on Archer platform
+- a dedicated service account;
+- restricted filesystem permissions;
+- environment variables or a secrets manager;
+- structured logging;
+- log rotation;
+- process supervision through `systemd`;
+- monitoring and alerting;
+- retry handling for temporary API failures;
+- duplicate email and duplicate incident protection.
 
-If you don't want to follow this 90 days rule, feel free to read the [oficial](https://github.com/O365/python-o365) documentation.
+## Current Limitations
+
+- The current implementation is designed for Linux-based environments.
+- Archer API configuration must be adapted to each environment.
+- Mailbox and permission configuration depends on the organization.
+- Error handling and retry behavior may require additional customization for production use.
 
 ## References
 
-### Oficial documentation <a name = "oficial_doc"></a>
+- [Archer](https://www.archerirm.com/)
+- [Python](https://www.python.org/)
+- [`python-o365`](https://github.com/O365/python-o365)
+- [Microsoft Graph API](https://learn.microsoft.com/en-us/graph/overview)
+- [Microsoft Entra ID documentation](https://learn.microsoft.com/en-us/entra/identity-platform/)
 
-### [python-o365](https://github.com/O365/python-o365)
+## Author
+
+**Antonio Costa**
+
+- GitHub: [@AntonioJCosta](https://github.com/AntonioJCosta)
+- LinkedIn: [Antonio Costa](https://www.linkedin.com/in/dev-antonio-costa/)
+
+## License
+
+This project is licensed under the [MIT License](./LICENSE).
